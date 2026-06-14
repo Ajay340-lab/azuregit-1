@@ -11,3 +11,11 @@ resource "azurerm_storage_container" "container-1" {
   storage_account_name  = azurerm_storage_account.storage-1.name
   container_access_type = "private"
 }
+
+resource "azurerm_storage_blob" "blob-1" {
+  name                   = "blob1"
+  storage_account_name   = azurerm_storage_account.storage-1.name
+  storage_container_name = azurerm_storage_container.container-1.name
+  type                   = "Block"
+  source_content         = "Hello, World!"
+}
